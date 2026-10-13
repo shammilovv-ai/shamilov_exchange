@@ -245,9 +245,9 @@
 
 <script>
 /* ================= НАСТРОЙКИ ================= */
-const MANAGER = "shamllovv";   // <-- username бота/менеджера в Telegram (без @)
+const MANAGER = "shamllovv";                // <-- менеджер, которому уходят заявки
 const RATE_KEY = "se_rate", ORD_KEY = "se_orders", ONB_KEY = "se_onb";
-const ADMIN_IDS = []; // <-- сюда Telegram user_id админов, которым разрешено менять курс
+const ADMIN_IDS = [7822390789];             // <-- твой Telegram ID: менять курс прямо из приложения
 
 const tg = window.Telegram?.WebApp;
 tg?.ready(); tg?.expand();
@@ -307,7 +307,7 @@ function createOrder(){
 /* ================= ПЕРЕХОД К МЕНЕДЖЕРУ ================= */
 function toManager(topic, text){
   const msg = encodeURIComponent(text || `Здравствуйте! Интересует обмен: ${topic}. Курс ₽→¥ сегодня ${rate}.`);
-  const url = `https://t.me/${shamllovv}?start=${encodeURIComponent(topic)}`;
+  const url = `https://t.me/${MANAGER}?start=${encodeURIComponent(topic)}`;
   tg?.openTelegramLink(url) || window.open(url, "_blank");
   console.log("Заявка менеджеру:", msg);
 }
